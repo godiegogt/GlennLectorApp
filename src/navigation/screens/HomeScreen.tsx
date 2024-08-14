@@ -3,6 +3,7 @@ import React from 'react'
 import { Image } from 'native-base'
 import Menu from '../../components/common/Menu'
 import Theme from '../../constants/Theme'
+import Signout from '../../components/common/Signout'
 
 
 
@@ -12,6 +13,7 @@ const Home = () => {
       <View style={styles.logoContainer}><Image resizeMode='contain' source={require('../../assets/img/logo.png')} alt='Logo' /></View>
    <View style={styles.content}>
    <Menu/>
+   <Signout/>
    </View>
    
     </ScrollView>

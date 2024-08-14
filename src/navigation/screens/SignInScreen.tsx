@@ -2,9 +2,24 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import Theme from '../../constants/Theme'
 import { Box, Button, Icon, Input, theme } from 'native-base'
+import { useDispatch, useSelector } from 'react-redux'
+import {signin} from '../../state/slices/ConfigurationSlice'
+import { RootState } from '../../state/store'
 
 
 const LoginScreen = () => {
+  const config = useSelector((state:RootState)=>state.configuration)
+const dispatch=useDispatch()
+  const _signIn=()=>{
+    console.log('signin')
+dispatch(signin())
+  }
+
+  React.useEffect(() => {
+   console.log('auth',config)
+  }, [config])
+  
+
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}><Image resizeMode='contain' style={styles.logo} source={require('../../assets/img/logo.png')} /></View>
@@ -22,7 +37,7 @@ const LoginScreen = () => {
             style={{ width: '100%',backgroundColor:Theme.colors.primary }}
            
             onPress={() => {
-              console.log('hello')
+              _signIn()
             }}
 
           >
