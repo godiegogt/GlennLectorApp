@@ -2,15 +2,18 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { FC } from 'react'
 import { Container } from 'native-base'
 import Theme from '../../constants/Theme'
+import { useNavigation } from '@react-navigation/native'
 
 type MenuItemProps={
-    name:string
+    category:any
 }
 
-const MenuItem:FC<MenuItemProps> = ({name}) => {
+const MenuItem:FC<MenuItemProps> = ({category}) => {
+  const navigation=useNavigation()
   return (
-    <TouchableOpacity style={styles.Container}>
-      <Text style={styles.text}>{name}</Text>
+    <TouchableOpacity style={styles.Container} 
+    onPress={() => navigation.navigate('Category', { categoryId: category.id, categoryName: category.name })}>
+      <Text style={styles.text}>{category.name.toUpperCase()}</Text>
     </TouchableOpacity>
   )
 }
