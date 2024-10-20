@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "758723698560",
+    "project_id": "glenn-22ae4",
+    "storage_bucket": "glenn-22ae4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:758723698560:android:6e0b620bc758a2eec36b65",
+        "android_client_info": {
+          "package_name": "com.glennlectorapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYXINYJsb14X4Z6I_Qw56bovsaNWqOCy0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
