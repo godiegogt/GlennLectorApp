@@ -1,23 +1,43 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React, { useState } from 'react'
 import Theme from '../../constants/Theme'
 import { Box, Button, Icon, Input, theme } from 'native-base'
 import { useDispatch, useSelector } from 'react-redux'
 import {signin} from '../../state/slices/ConfigurationSlice'
 import { RootState } from '../../state/store'
-
+import auth from '@react-native-firebase/auth';
 
 const LoginScreen = () => {
-  const config = useSelector((state:RootState)=>state.configuration)
-const dispatch=useDispatch()
-  const _signIn=()=>{
-    console.log('signin')
-dispatch(signin())
-  }
+  const [isLoading, setisLoading] = useState(false)
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const handleLogin = () => {
+    
+    if (email === '' || password === '') {
+      Alert.alert('Error', 'Please fill in all fields');
+      return;
+    }
+   try {
+       
+    setisLoading(true);
 
-  React.useEffect(() => {
-   console.log('auth',config)
-  }, [config])
+    // Perform login logic here
+    auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        // navigation.replace('Categories');
+        setisLoading(false)
+      })
+      .catch((error) => {
+        Alert.alert('Error', error.message);
+        setisLoading(false)
+      });
+   } catch (error) {
+    
+   }finally{
+    setisLoading(false)
+   }
+  };
   
 
   return (
@@ -27,17 +47,19 @@ dispatch(signin())
       <View style={styles.content}>
 
         <View style={styles.inputs}>
-          <Input mb={10} placeholder="Username" />
-          <Input placeholder="Password" />
+          <Input onChangeText={(text) => setEmail(text)} mb={10} placeholder="Username" />
+          <Input onChangeText={(text) => setPassword(text)} placeholder="Password" type='password' />
         </View>
 
 
         <View style={styles.buttons}>
           <Button
+          disabled={isLoading}
+          isLoading={isLoading}
             style={{ width: '100%',backgroundColor:Theme.colors.primary }}
            
             onPress={() => {
-              _signIn()
+              handleLogin()
             }}
 
           >

@@ -3,17 +3,21 @@ import React from 'react'
 import Theme from '../../constants/Theme'
 import { useDispatch } from 'react-redux'
 import { singout } from '../../state/slices/ConfigurationSlice'
+import auth from '@react-native-firebase/auth';
 
 const Signout = () => {
-const dispatch=useDispatch();
-    const _singout=()=>{
-            dispatch(singout());
+
+  const _singout=()=>{
+      auth()
+        .signOut()
+        .then(() => console.log('User signed out!'));
+          
     }
 
 
     return (
       <TouchableOpacity style={styles.Container} onPress={_singout}>
-        <Text style={styles.text}>Salir</Text>
+        <Text style={styles.text}>EXIT</Text>
       </TouchableOpacity>
     )
   }
