@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Image, TouchableOpacity, Text, StyleSheet, ActivityIndicator, Alert } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
+import ItemText from '../../components/category/ItemText';
 
 const CategoryScreen = ({ route }) => {
   const { categoryId, categoryName } = route.params;
@@ -30,7 +31,7 @@ const CategoryScreen = ({ route }) => {
                
                 // Si 'url' es una ruta en Firebase Storage, obtenemos el enlace de descarga
               
-                  imageUrl = await storage().ref(`${obj.name}.png`).getDownloadURL();
+                  imageUrl = await storage().ref(`${obj.name.toLowerCase()}.png`).getDownloadURL();
              console.log(imageUrl)
                 return { ...obj, imageUrl };
               })
@@ -89,7 +90,7 @@ const CategoryScreen = ({ route }) => {
           style={styles.image}
           resizeMode="contain"
         />
-        <Text style={styles.objectName}>{objects[index].name.toUpperCase()}</Text>
+       <ItemText name={objects[index].name}/>
       </View>
 
       <TouchableOpacity onPress={handleNext} style={styles.arrowButton}>
@@ -100,9 +101,9 @@ const CategoryScreen = ({ route }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { flexDirection: 'row', alignItems: 'center', flex: 1 },
-  arrowButton: { padding: 20 },
-  arrowText: { fontSize: 30 },
+  container: { flexDirection: 'row', alignItems: 'center', flex: 1,backgroundColor:'#fff' },
+  arrowButton: { backgroundColor:'#9f99f2',width:70,height:70,borderRadius:35,justifyContent:'center',alignItems:'center' },
+  arrowText: { fontSize: 50,color:'#fff',fontWeight:'bold',fontFamily:'Roboto' },
   imageContainer: { flex: 1, alignItems: 'center' },
   image: { width: '80%', height: '70%' },
   objectName: { fontSize: 20, marginTop: 10 },
