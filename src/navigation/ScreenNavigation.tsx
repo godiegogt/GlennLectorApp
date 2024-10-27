@@ -33,7 +33,7 @@ const ScreenNavigation = () => {
             {user ? (
               <>
                 <Stack.Screen options={{ headerShown: false }} name="Home" component={HomeScreen} />
-                <Stack.Screen  name="Category" component={CategoryScreen} />
+                <Stack.Screen options={{ headerTitle:'Categoria' }}  name="Category"  component={CategoryScreen} />
               </>
             ) : (
               <>

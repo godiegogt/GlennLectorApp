@@ -31,7 +31,7 @@ const CategoryScreen = ({ route }) => {
                
                 // Si 'url' es una ruta en Firebase Storage, obtenemos el enlace de descarga
               
-                  imageUrl = await storage().ref(`${obj.name.toLowerCase()}.png`).getDownloadURL();
+                  imageUrl = await storage().ref(`${obj.url.toLowerCase()}`).getDownloadURL();
              console.log(imageUrl)
                 return { ...obj, imageUrl };
               })

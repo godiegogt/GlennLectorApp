@@ -17,7 +17,7 @@ const Signout = () => {
 
     return (
       <TouchableOpacity style={styles.Container} onPress={_singout}>
-        <Text style={styles.text}>EXIT</Text>
+        <Text style={styles.text}>SALIR</Text>
       </TouchableOpacity>
     )
   }

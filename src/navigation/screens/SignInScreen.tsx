@@ -47,8 +47,8 @@ const LoginScreen = () => {
       <View style={styles.content}>
 
         <View style={styles.inputs}>
-          <Input onChangeText={(text) => setEmail(text)} mb={10} placeholder="Username" />
-          <Input onChangeText={(text) => setPassword(text)} placeholder="Password" type='password' />
+          <Input onChangeText={(text) => setEmail(text)} mb={10} placeholder="Usuario" />
+          <Input onChangeText={(text) => setPassword(text)} placeholder="Contraseña" type='password' />
         </View>
 
 
@@ -63,7 +63,7 @@ const LoginScreen = () => {
             }}
 
           >
-            SignIn
+            Entrar
           </Button>
 
 
@@ -71,7 +71,7 @@ const LoginScreen = () => {
         </View>
 
         <View style={styles.signupbuttons}>
-          <Text>No tienes cuenta?<TouchableOpacity style={{display:'flex',justifyContent:'center',alignItems:'center'}}><Text style={{color:Theme.colors.primary,fontWeight:'bold'}}> Registrarse</Text></TouchableOpacity></Text>
+          {/* <Text>No tienes cuenta?<TouchableOpacity style={{display:'flex',justifyContent:'center',alignItems:'center'}}><Text style={{color:Theme.colors.primary,fontWeight:'bold'}}> Registrarse</Text></TouchableOpacity></Text> */}
         </View>
         
       </View>
