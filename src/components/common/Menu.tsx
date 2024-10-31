@@ -53,7 +53,7 @@ return () => unsubscribe();
   return (
     <View>
      {
-        categories.map((item:any)=><MenuItem category={item}/>)
+        categories.map((item:any)=><MenuItem key={item.id} category={item}/>)
      }
     </View>
   )

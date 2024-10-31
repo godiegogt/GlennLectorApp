@@ -2,7 +2,7 @@ import { ActivityIndicator, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import {HomeScreen,SignInScreen,CategoryScreen} from './screens'
+import {HomeScreen,SignInScreen,CategoryScreen,ARScene} from './screens'
 import { useSelector } from 'react-redux';
 import { RootState } from '../state/store';
 const Stack = createStackNavigator();
@@ -34,6 +34,7 @@ const ScreenNavigation = () => {
               <>
                 <Stack.Screen options={{ headerShown: false }} name="Home" component={HomeScreen} />
                 <Stack.Screen options={{ headerTitle:'Categoria' }}  name="Category"  component={CategoryScreen} />
+                <Stack.Screen options={{ headerTitle:'AR' }}  name="AR"  component={ARScene} />
               </>
             ) : (
               <>

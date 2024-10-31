@@ -4,13 +4,14 @@ import { View, Image, TouchableOpacity, Text, StyleSheet, ActivityIndicator, Ale
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 import ItemText from '../../components/category/ItemText';
+import { useNavigation } from '@react-navigation/native';
 
 const CategoryScreen = ({ route }) => {
   const { categoryId, categoryName } = route.params;
   const [objects, setObjects] = useState([]);
   const [index, setIndex] = useState(0);
   const [loading, setLoading] = useState(true);
-
+  const navigation=useNavigation()
   useEffect(() => {
    
 
@@ -84,14 +85,14 @@ const CategoryScreen = ({ route }) => {
         <Text style={styles.arrowText}>{"<"}</Text>
       </TouchableOpacity>
 
-      <View style={styles.imageContainer}>
+      <TouchableOpacity style={styles.imageContainer} onPress={()=>{ navigation.navigate('AR',{img:objects[index].url})}}>
         <Image
           source={{ uri: objects[index].imageUrl }}
           style={styles.image}
           resizeMode="contain"
         />
        <ItemText name={objects[index].name}/>
-      </View>
+      </TouchableOpacity>
 
       <TouchableOpacity onPress={handleNext} style={styles.arrowButton}>
         <Text style={styles.arrowText}>{">"}</Text>
